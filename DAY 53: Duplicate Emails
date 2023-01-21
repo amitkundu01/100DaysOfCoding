@@ -1,0 +1,37 @@
+-----------------------------------------Problem----------------------------------------------------
+Write an SQL query to report all the duplicate emails.
+
+Return the result table in any order.
+------------------------------------------SCHEMA----------------------------------------------------
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key column for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+
+Input: 
+Person table:
++----+---------+
+| id | email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+------------------------------------------SOLUTION------------------------------------
+SELECT EMAIL 
+FROM PERSON  
+GROUP BY EMAIL HAVING COUNT(EMAIL)>1;
+
+Output: 
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+Explanation: a@b.com is repeated two times.
