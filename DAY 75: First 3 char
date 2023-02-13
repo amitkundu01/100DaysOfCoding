@@ -1,0 +1,15 @@
+-----------------------------------------Problem----------------------------------------------------
+Write an SQL query to print the first three characters of  FIRST_NAME from Worker table.
+------------------------------------------SCHEMA----------------------------------------------------
+Sample Table – Worker
+WORKER_ID	FIRST_NAME	LAST_NAME	SALARY	JOINING_DATE	DEPARTMENT
+001	Monika	Arora	100000	2014-02-20 09:00:00	HR
+002	Niharika	Verma	80000	2014-06-11 09:00:00	Admin
+003	Vishal	Singhal	300000	2014-02-20 09:00:00	HR
+004	Amitabh	Singh	500000	2014-02-20 09:00:00	Admin
+005	Vivek	Bhati	500000	2014-06-11 09:00:00	Admin
+006	Vipul	Diwan	200000	2014-06-11 09:00:00	Account
+007	Satish	Kumar	75000	2014-01-20 09:00:00	Account
+008	Geetika	Chauhan	90000	2014-04-11 09:00:00	Admin
+------------------------------------------SOLUTION------------------------------------
+Select substring(FIRST_NAME,1,3) from Worker;
