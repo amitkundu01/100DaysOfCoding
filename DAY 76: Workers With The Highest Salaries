@@ -1,0 +1,21 @@
+-----------------------------------------Problem----------------------------------------------------
+Find the titles of workers that earn the lowest salary. Output the lowest-paid title or multiple titles that share the lowest salary.
+------------------------------------------SCHEMA----------------------------------------------------
+Sample Table – 
+Worker
+worker_id: int
+first_name: varchar
+last_name: varchar
+salary: int
+joining_date: datetime
+department: varchar
+
+title
+worker_ref_id: int
+worker_title: varchar
+affected_from: datetime
+------------------------------------------SOLUTION------------------------------------
+select t.worker_title
+from worker w join title t on w.worker_id = t.worker_ref_id 
+where salary in (select max(salary)
+                    from worker);
