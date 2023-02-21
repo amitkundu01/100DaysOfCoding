@@ -1,0 +1,39 @@
+-----------------------------------------Problem----------------------------------------------------
+Find the number of apartments per nationality that are owned by people under 30 years old.
+Output the nationality along with the number of apartments.
+Sort records by the apartments count in descending order.
+------------------------------------------SCHEMA----------------------------------------------------
+Sample Table – 
+airbnb_hosts
+
+host_id:
+int
+nationality:
+varchar
+gender:
+varchar
+age:
+int
+-----
+airbnb_units
+
+host_id:
+int
+unit_id:
+varchar
+unit_type:
+varchar
+n_beds:
+int
+n_bedrooms:
+int
+country:
+varchar
+city:
+varchar
+------------------------------------------SOLUTION------------------------------------
+select h.nationality, count(DISTINCT unit_id) as apartment_count from airbnb_hosts h 
+join airbnb_units u on h.host_id = u.host_id
+where h.age < '30' and u.unit_type = 'apartment'
+group by h.nationality 
+order by apartment_count desc
