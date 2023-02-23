@@ -1,0 +1,20 @@
+-----------------------------------------Problem----------------------------------------------------
+Count the number of movies that Abigail Breslin was nominated for an oscar.
+------------------------------------------SCHEMA----------------------------------------------------
+Sample Table – 
+oscar_nominees
+
+year:
+int
+category:
+varchar
+nominee:
+varchar
+movie:
+varchar
+winner:
+bool
+id:
+int
+------------------------------------------SOLUTION------------------------------------
+select COUNT(movie) AS n_movies_by_abi from oscar_nominees WHERE nominee="Abigail Breslin";
