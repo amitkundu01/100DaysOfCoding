@@ -1,0 +1,45 @@
+-----------------------------------------Problem----------------------------------------------------
+Find the date with the highest total energy consumption from the Meta/Facebook data centers.
+Output the date along with the total energy consumption across all data centers.
+------------------------------------------SCHEMA----------------------------------------------------
+Sample Table –
+
+fb_eu_energy
+date:
+datetime
+consumption:
+int
+
+fb_asia_energy
+date:
+datetime
+consumption:
+int
+
+fb_na_energy
+date:
+datetime
+consumption:
+int
+------------------------------------------SOLUTION------------------------------------
+WITH all_energy AS (
+    SELECT * FROM fb_eu_energy
+    UNION ALL
+    SELECT * FROM fb_asia_energy
+    UNION ALL
+    SELECT * FROM fb_na_energy
+), 
+daily_energy AS (
+    SELECT date, SUM(consumption) AS total_energy
+    FROM all_energy
+    GROUP BY date
+),
+max_energy AS (
+    SELECT MAX(total_energy) AS max_energy
+    FROM daily_energy
+)
+    
+SELECT b.date, b.total_energy
+FROM daily_energy b
+INNER JOIN max_energy me
+ON b.total_energy = me.max_energy;
