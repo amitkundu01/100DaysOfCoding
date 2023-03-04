@@ -1,0 +1,20 @@
+-----------------------------------------Problem----------------------------------------------------
+Find the number of times the words 'bull' and 'bear' occur in the contents.
+We're counting the number of times the words occur so words like 'bullish' should not be included in our count.
+Output the word 'bull' and 'bear' along with the corresponding number of occurrences.
+------------------------------------------SCHEMA----------------------------------------------------
+Sample Table –
+
+google_file_store
+
+filename:
+varchar
+contents:
+varchar
+--------------------------------------SOLUTION------------------------------------
+select 'Bull' as word, sum((char_length(contents)-char_length(replace(contents,' bull ','')))/char_length(' bull ')) 
+as number
+from google_file_store
+union
+select 'Bear' as word, sum((char_length(contents)-char_length(replace(contents,' bear ','')))/char_length(' bear ')) 
+as number from google_file_store
